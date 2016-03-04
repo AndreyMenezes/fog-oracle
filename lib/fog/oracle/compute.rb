@@ -1,0 +1,320 @@
+require 'fog/oracle/core'
+
+require 'fog/oracle/models/compute/access_group_type'
+require 'fog/oracle/models/compute/affinity_type'
+require 'fog/oracle/models/compute/backing_device_type'
+require 'fog/oracle/models/compute/bond_mode'
+require 'fog/oracle/models/compute/clone_target_type'
+require 'fog/oracle/models/compute/clone_type'
+require 'fog/oracle/models/compute/cluster_heartbeat_storage_type'
+require 'fog/oracle/models/compute/disk_type'
+require 'fog/oracle/models/compute/disk_write_mode'
+require 'fog/oracle/models/compute/equality_type'
+require 'fog/oracle/models/compute/event_field'
+require 'fog/oracle/models/compute/event_severity'
+require 'fog/oracle/models/compute/file_server_type'
+require 'fog/oracle/models/compute/hypervisor_capability'
+require 'fog/oracle/models/compute/hypervisor_type'
+require 'fog/oracle/models/compute/ipaddress_config_type'
+require 'fog/oracle/models/compute/ipaddress_type'
+require 'fog/oracle/models/compute/job_error_type'
+require 'fog/oracle/models/compute/job_run_state'
+require 'fog/oracle/models/compute/log_level'
+require 'fog/oracle/models/compute/manager_run_state'
+require 'fog/oracle/models/compute/order_type'
+require 'fog/oracle/models/compute/package_signature_type'
+require 'fog/oracle/models/compute/package_type'
+require 'fog/oracle/models/compute/path_state'
+require 'fog/oracle/models/compute/policy_mode'
+require 'fog/oracle/models/compute/port_state'
+require 'fog/oracle/models/compute/port_type'
+require 'fog/oracle/models/compute/processor_type'
+require 'fog/oracle/models/compute/repository_export_fs_type'
+require 'fog/oracle/models/compute/resource_group_type'
+require 'fog/oracle/models/compute/role'
+require 'fog/oracle/models/compute/server_controller_type'
+require 'fog/oracle/models/compute/server_role'
+require 'fog/oracle/models/compute/server_run_state'
+require 'fog/oracle/models/compute/server_update_repository_type'
+require 'fog/oracle/models/compute/statistic_field'
+require 'fog/oracle/models/compute/statistic_type'
+require 'fog/oracle/models/compute/storage_ability'
+require 'fog/oracle/models/compute/storage_ability_value'
+require 'fog/oracle/models/compute/storage_element_state'
+require 'fog/oracle/models/compute/storage_element_type'
+require 'fog/oracle/models/compute/storage_type'
+require 'fog/oracle/models/compute/storage_use'
+require 'fog/oracle/models/compute/vm_boot_type'
+require 'fog/oracle/models/compute/vm_domain_type'
+require 'fog/oracle/models/compute/vm_message_type'
+require 'fog/oracle/models/compute/vm_mouse_type'
+require 'fog/oracle/models/compute/vm_restart_action'
+require 'fog/oracle/models/compute/vm_run_state'
+require 'fog/oracle/models/compute/vm_start_policy'
+require 'fog/oracle/models/compute/ws_error_code'
+
+module Fog
+  module Compute
+    class Oracle < Fog::Service
+      requires :oracle_username
+      requires :oracle_password
+      requires :oracle_url
+
+      model_path 'fog/oracle/models/compute'
+      model      :access_group
+      collection :access_groups
+      model      :access_host
+      collection :access_hosts
+      model      :affinity_group
+      collection :affinity_groups
+      model      :archive_management_attributes
+      collection :archive_management_attributeses
+      model      :assembly
+      collection :assemblies
+      model      :assembly_virtual_disk
+      collection :assembly_virtual_disks
+      model      :assembly_vm
+      collection :assembly_vms
+      model      :backup_management_attributes
+      collection :backup_management_attributeses
+      model      :business_selection
+      collection :business_selections
+      model      :cluster
+      collection :clusters
+      model      :cluster_heartbeat_device
+      collection :cluster_heartbeat_devices
+      model      :cluster_storage_fs
+      collection :cluster_storage_fses
+      model      :comparison_type
+      collection :comparison_types
+      model      :control_domain
+      collection :control_domains
+      model      :cpu
+      collection :cpus
+      model      :cpu_compatibility_group
+      collection :cpu_compatibility_groups
+      model      :ethernet_port
+      collection :ethernet_ports
+      model      :event
+      collection :events
+      model      :event_management_attributes
+      collection :event_management_attributeses
+      model      :event_query
+      collection :event_queries
+      model      :file_server
+      collection :file_servers
+      model      :file_server_plugin
+      collection :file_server_plugins
+      model      :file_system
+      collection :file_systems
+      model      :file_system_mount
+      collection :file_system_mounts
+      model      :hypervisor
+      collection :hypervisors
+      model      :ipaddress
+      collection :ipaddresses
+      model      :job
+      collection :jobs
+      model      :job_error
+      collection :job_errors
+      model      :job_management_attributes
+      collection :job_management_attributeses
+      model      :key_value_pair
+      collection :key_value_pairs
+      model      :logger_management_attributes
+      collection :logger_management_attributeses
+      model      :login_certificate
+      collection :login_certificates
+      model      :mac_management_attributes
+      collection :mac_management_attributeses
+      model      :manager
+      collection :managers
+      model      :network
+      collection :networks
+      model      :password_change
+      collection :password_changes
+      model      :periodic_task
+      collection :periodic_tasks
+      model      :qos_value
+      collection :qos_values
+      model      :repository
+      collection :repositories
+      model      :repository_export
+      collection :repository_exports
+      model      :repository_import
+      collection :repository_imports
+      model      :resource_group
+      collection :resource_groups
+      model      :server
+      collection :servers
+      model      :server_abilities
+      collection :server_abilitieses
+      model      :server_controller
+      collection :server_controllers
+      model      :server_event_attributes
+      collection :server_event_attributeses
+      model      :server_pool
+      collection :server_pools
+      model      :server_pool_network_policy
+      collection :server_pool_network_policies
+      model      :server_pool_policy
+      collection :server_pool_policies
+      model      :server_update_configuration
+      collection :server_update_configurations
+      model      :server_update_repository_configuration
+      collection :server_update_repository_configurations
+      model      :session_properties
+      collection :session_propertieses
+      model      :statistic
+      collection :statistics
+      model      :statistic_query
+      collection :statistic_queries
+      model      :statistics_management_attributes
+      collection :statistics_management_attributeses
+      model      :storage_ability_record
+      collection :storage_ability_records
+      model      :storage_array
+      collection :storage_arrays
+      model      :storage_array_plugin
+      collection :storage_array_plugins
+      model      :storage_element
+      collection :storage_elements
+      model      :storage_initiator
+      collection :storage_initiators
+      model      :storage_path
+      collection :storage_paths
+      model      :storage_target
+      collection :storage_targets
+      model      :string_list
+      collection :string_lists
+      model      :unselected_object_details
+      collection :unselected_object_detailses
+      model      :virtual_disk
+      collection :virtual_disks
+      model      :virtual_nic
+      collection :virtual_nics
+      model      :virtual_switch
+      collection :virtual_switches
+      model      :vlan_interface
+      collection :vlan_interfaces
+      model      :vm
+      collection :vms
+      model      :vm_clone_definition
+      collection :vm_clone_definitions
+      model      :vm_clone_network_mapping
+      collection :vm_clone_network_mappings
+      model      :vm_clone_storage_mapping
+      collection :vm_clone_storage_mappings
+      model      :vm_disk_mapping
+      collection :vm_disk_mappings
+      model      :volume_group
+      collection :volume_groups
+      model      :ws_error_details
+      collection :ws_error_detailses
+      model      :ws_exception
+      collection :ws_exceptions
+      model      :zone
+      collection :zones
+
+      request_path 'fog/oracle/requests/compute'
+      request :login
+
+      request :get_control_domain
+      request :get_cpu
+      request :get_cpu_compatibility_group
+      request :get_ethernet_port
+      request :get_file_server
+      request :get_file_server_plugin
+      request :get_file_system
+      request :get_file_system_mount
+      request :get_job
+      request :get_manager
+      request :get_network
+      request :get_repository
+      request :get_server
+      request :get_server_pool
+      request :get_server_pool_policy
+      request :get_server_update_configuration
+      request :get_storage_array
+      request :get_storage_array_plugin
+      request :get_storage_element
+      request :get_storage_initiator
+      request :get_storage_path
+      request :get_virtual_disk
+      request :get_virtual_nic
+      request :get_virtual_switch
+      request :get_vm
+      request :get_vm_disk_mapping
+      request :get_volume_group
+
+      request :list_access_groups
+      request :list_affinity_groups
+      request :list_assemblies
+      request :list_assembly_virtual_disks
+      request :list_assembly_vms
+      request :list_clusters
+      request :list_cluster_heartbeat_devices
+      request :list_cluster_storage_fses
+      request :list_control_domains
+      request :list_cpus
+      request :list_cpu_compatibility_groups
+      request :list_ethernet_ports
+      request :list_file_servers
+      request :list_file_server_plugins
+      request :list_file_systems
+      request :list_file_system_mounts
+      request :list_jobs
+      request :list_managers
+      request :list_networks
+      request :list_repositories
+      request :list_repository_exports
+      request :list_resource_groups
+      request :list_servers
+      request :list_server_controllers
+      request :list_server_pools
+      request :list_server_pool_network_policies
+      request :list_server_pool_policies
+      request :list_server_update_configurations
+      request :list_server_update_repository_configurations
+      request :list_storage_arrays
+      request :list_storage_array_plugins
+      request :list_storage_elements
+      request :list_storage_initiators
+      request :list_storage_paths
+      request :list_storage_targets
+      request :list_virtual_disks
+      request :list_virtual_nics
+      request :list_virtual_switches
+      request :list_vlan_interfaces
+      request :list_vms
+      request :list_vm_clone_definitions
+      request :list_vm_clone_network_mappings
+      request :list_vm_clone_storage_mappings
+      request :list_vm_disk_mappings
+      request :list_volume_groups
+      request :list_zones
+
+      class Mock
+        def initialize(options={})
+          
+        end
+
+        def ipaddresses(attributes = {})
+          Fog::Compute::Oracle::IPAddresses.new({ :service => self }.merge(attributes))
+        end
+      end
+
+      class Real
+        include Fog::Oracle::Core
+
+        def initialize(options={})
+          core_initialize options
+        end
+
+        def ipaddresses(attributes = {})
+          Fog::Compute::Oracle::IPAddresses.new({ :service => self }.merge(attributes))
+        end
+      end
+    end
+  end
+end
